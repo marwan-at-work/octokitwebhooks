@@ -25,7 +25,7 @@
               },
               "tsAdditionalProperties": false
             },
-            "answer_html_url": { "type": "null" },
+            "answer_html_url": { "type": ["string", "null"] },
             "answer_chosen_at": { "type": "null" },
             "answer_chosen_by": { "type": "null" }
           },

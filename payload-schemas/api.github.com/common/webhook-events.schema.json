@@ -59,7 +59,7 @@
     },
     {
       "type": "array",
-      "items": { "type": "string", "const": "*" },
+      "items": { "type": "string", "enum": ["*"] },
       "maxItems": 1,
       "minItems": 1
     }

@@ -2,13 +2,27 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "organization$renamed",
   "type": "object",
-  "required": ["action", "membership", "organization", "sender"],
+  "required": ["action", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["renamed"] },
     "membership": { "$ref": "common/membership.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": { "$ref": "common/organization.schema.json" },
+    "enterprise": { "$ref": "common/enterprise.schema.json" },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
   },
   "additionalProperties": false,
   "title": "organization renamed event"

@@ -11,7 +11,12 @@
         {
           "type": "object",
           "required": ["milestone"],
-          "properties": { "milestone": { "type": "null" } },
+          "properties": {
+            "milestone": {
+              "nullable": true,
+              "$ref": "common/milestone.schema.json"
+            }
+          },
           "tsAdditionalProperties": false
         }
       ]

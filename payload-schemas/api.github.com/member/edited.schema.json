@@ -29,6 +29,7 @@
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }
   },

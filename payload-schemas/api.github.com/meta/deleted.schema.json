@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "meta$deleted",
   "type": "object",
-  "required": ["action", "hook_id", "hook", "repository", "sender"],
+  "required": ["action", "hook_id", "hook", "repository"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
     "hook_id": {

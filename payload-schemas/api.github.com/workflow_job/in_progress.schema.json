@@ -21,8 +21,7 @@
               "type": "array",
               "items": {
                 "$ref": "common/workflow-step-in_progress.schema.json"
-              },
-              "minItems": 1
+              }
             }
           },
           "tsAdditionalProperties": false

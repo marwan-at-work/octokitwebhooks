@@ -17,7 +17,7 @@
   "properties": {
     "id": {
       "description": "Unique identifier of the GitHub app",
-      "type": "integer"
+      "type": ["integer", "null"]
     },
     "slug": {
       "description": "The slug name of the GitHub app",
@@ -27,10 +27,10 @@
     "owner": { "$ref": "user.schema.json" },
     "name": { "description": "The name of the GitHub app", "type": "string" },
     "description": { "type": ["string", "null"] },
-    "external_url": { "type": "string", "format": "uri" },
+    "external_url": { "type": ["string", "null"], "format": "uri" },
     "html_url": { "type": "string", "format": "uri" },
-    "created_at": { "type": "string", "format": "date-time" },
-    "updated_at": { "type": "string", "format": "date-time" },
+    "created_at": { "type": ["string", "null"], "format": "date-time" },
+    "updated_at": { "type": ["string", "null"], "format": "date-time" },
     "permissions": {
       "description": "The set of permissions for the GitHub app",
       "type": "object",
