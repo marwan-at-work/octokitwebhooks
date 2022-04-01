@@ -32,6 +32,40 @@
             "from": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
+        },
+        "authorized_dismissal_actors_only": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": ["boolean", "null"] } },
+          "additionalProperties": false
+        },
+        "required_status_checks_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "linear_history_requirement_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "admin_enforced": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": ["boolean", "null"] } },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
