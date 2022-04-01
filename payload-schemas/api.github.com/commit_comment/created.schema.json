@@ -61,7 +61,8 @@
         "author_association": {
           "$ref": "common/author_association.schema.json"
         },
-        "body": { "type": "string", "description": "The text of the comment." }
+        "body": { "type": "string", "description": "The text of the comment." },
+        "reactions": { "$ref": "common/reactions.schema.json" }
       },
       "additionalProperties": false
     },

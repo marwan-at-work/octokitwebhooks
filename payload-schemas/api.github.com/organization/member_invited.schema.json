@@ -44,7 +44,8 @@
     "user": { "$ref": "common/user.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": { "$ref": "common/organization.schema.json" },
+    "enterprise": { "$ref": "common/enterprise.schema.json" }
   },
   "additionalProperties": false,
   "title": "organization member_invited event"

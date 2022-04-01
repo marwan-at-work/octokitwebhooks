@@ -144,7 +144,10 @@
             },
             "author": { "$ref": "common/user.schema.json" },
             "source_url": { "type": "string" },
-            "installation_command": { "type": "string" }
+            "installation_command": { "type": "string" },
+            "container_metadata": {
+              "type": ["object", "null"]
+            }
           },
           "additionalProperties": false
         },
