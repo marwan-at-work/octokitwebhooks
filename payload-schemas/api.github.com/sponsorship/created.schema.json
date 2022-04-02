@@ -21,7 +21,8 @@
         "sponsorable": { "$ref": "common/user.schema.json" },
         "sponsor": { "$ref": "common/user.schema.json" },
         "privacy_level": { "type": "string" },
-        "tier": { "$ref": "common/sponsorship-tier.schema.json" }
+        "tier": { "$ref": "common/sponsorship-tier.schema.json" },
+        "maintainer": { "type": "object" }
       },
       "additionalProperties": false
     },

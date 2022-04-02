@@ -14,6 +14,9 @@
       "description": "The changes to the collaborator permissions",
       "required": ["old_permission"],
       "properties": {
+        "permission": {
+          "type": "object"
+        },
         "old_permission": {
           "type": "object",
           "required": ["from"],

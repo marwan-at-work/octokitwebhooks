@@ -15,7 +15,10 @@
           "properties": {
             "from": {
               "type": "object",
-              "properties": { "user": { "$ref": "common/user.schema.json" } },
+              "properties": {
+                "user": { "$ref": "common/user.schema.json" },
+                "organization": { "$ref": "common/organization.schema.json" }
+              },
               "additionalProperties": false
             }
           },
