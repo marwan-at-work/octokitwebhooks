@@ -13,8 +13,10 @@
           "required": ["milestone"],
           "properties": {
             "milestone": {
-              "nullable": true,
-              "$ref": "common/milestone.schema.json"
+              "oneOf": [
+                { "type": "null" },
+                { "$ref": "common/milestone.schema.json" }
+              ]
             }
           },
           "tsAdditionalProperties": false
