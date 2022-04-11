@@ -2,12 +2,75 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "organization$member_invited",
   "type": "object",
-  "required": ["action", "invitation", "user", "organization", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["member_invited"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "member_invited"
+      ]
+    },
+    "enterprise": {
+      "$ref": "common/enterprise.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
     "invitation": {
       "type": "object",
-      "description": "The invitation for the user or email if the action is `member_invited`.",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "failed_at": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "failed_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "type": "number"
+        },
+        "invitation_teams_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "inviter": {
+          "$ref": "common/user.schema.json"
+        },
+        "login": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "team_count": {
+          "type": "number"
+        }
+      },
       "required": [
         "id",
         "node_id",
@@ -21,32 +84,25 @@
         "team_count",
         "invitation_teams_url"
       ],
-      "properties": {
-        "id": { "type": "number" },
-        "node_id": { "type": "string" },
-        "login": { "type": "string" },
-        "email": { "type": ["string", "null"] },
-        "role": { "type": "string" },
-        "created_at": { "type": "string", "format": "date-time" },
-        "failed_at": {
-          "oneOf": [
-            { "type": "string", "format": "date-time" },
-            { "type": "null" }
-          ]
-        },
-        "failed_reason": { "type": ["string", "null"] },
-        "inviter": { "$ref": "common/user.schema.json" },
-        "team_count": { "type": "number" },
-        "invitation_teams_url": { "type": "string", "format": "uri" }
-      },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The invitation for the user or email if the action is `member_invited`."
     },
-    "user": { "$ref": "common/user.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" },
-    "enterprise": { "$ref": "common/enterprise.schema.json" }
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "user": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "invitation",
+    "organization",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "organization member_invited event"
 }

@@ -2,39 +2,105 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "discussion$unanswered",
   "type": "object",
-  "required": ["action", "discussion", "old_answer", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["unanswered"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "unanswered"
+      ]
+    },
     "discussion": {
       "allOf": [
-        { "$ref": "common/discussion.schema.json" },
+        {
+          "$ref": "common/discussion.schema.json"
+        },
         {
           "type": "object",
+          "properties": {
+            "answer_chosen_at": {
+              "type": "null"
+            },
+            "answer_chosen_by": {
+              "type": "null"
+            },
+            "answer_html_url": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "is_answerable": {
+                  "type": "boolean",
+                  "enum": [
+                    true
+                  ]
+                }
+              },
+              "required": [
+                "is_answerable"
+              ]
+            }
+          },
           "required": [
             "category",
             "answer_html_url",
             "answer_chosen_at",
             "answer_chosen_by"
-          ],
-          "properties": {
-            "category": {
-              "type": "object",
-              "required": ["is_answerable"],
-              "properties": {
-                "is_answerable": { "type": "boolean", "enum": [true] }
-              },
-              "tsAdditionalProperties": false
-            },
-            "answer_html_url": { "type": ["string", "null"] },
-            "answer_chosen_at": { "type": "null" },
-            "answer_chosen_by": { "type": "null" }
-          },
-          "tsAdditionalProperties": false
+          ]
         }
       ]
     },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
     "old_answer": {
       "type": "object",
+      "properties": {
+        "author_association": {
+          "$ref": "common/author_association.schema.json"
+        },
+        "body": {
+          "type": "string"
+        },
+        "child_comment_count": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "discussion_id": {
+          "type": "integer"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "parent_id": {
+          "type": "null"
+        },
+        "reactions": {
+          "$ref": "common/reactions.schema.json"
+        },
+        "repository_url": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user": {
+          "$ref": "common/user.schema.json"
+        }
+      },
       "required": [
         "id",
         "node_id",
@@ -49,30 +115,24 @@
         "updated_at",
         "body"
       ],
-      "properties": {
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "html_url": { "type": "string" },
-        "parent_id": { "type": "null" },
-        "child_comment_count": { "type": "integer" },
-        "repository_url": { "type": "string" },
-        "discussion_id": { "type": "integer" },
-        "author_association": {
-          "$ref": "common/author_association.schema.json"
-        },
-        "user": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string", "format": "date-time" },
-        "body": { "type": "string" },
-        "reactions": { "$ref": "common/reactions.schema.json" }
-      },
       "additionalProperties": false
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "discussion",
+    "old_answer",
+    "repository"
+  ],
   "additionalProperties": false,
   "title": "discussion unanswered event"
 }

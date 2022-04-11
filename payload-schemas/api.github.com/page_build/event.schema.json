@@ -1,14 +1,52 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "page_build$event",
-  "description": "Page Build",
   "type": "object",
-  "required": ["id", "build", "repository", "sender"],
   "properties": {
-    "id": { "type": "integer" },
     "build": {
       "type": "object",
-      "description": "The [List GitHub Pages builds](https://docs.github.com/en/rest/reference/repos#list-github-pages-builds) itself.",
+      "properties": {
+        "commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "message"
+          ],
+          "additionalProperties": false
+        },
+        "pusher": {
+          "$ref": "common/user.schema.json"
+        },
+        "status": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
       "required": [
         "url",
         "status",
@@ -19,28 +57,32 @@
         "created_at",
         "updated_at"
       ],
-      "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "status": { "type": "string" },
-        "error": {
-          "type": "object",
-          "required": ["message"],
-          "properties": { "message": { "type": ["string", "null"] } },
-          "additionalProperties": false
-        },
-        "pusher": { "$ref": "common/user.schema.json" },
-        "commit": { "type": "string" },
-        "duration": { "type": "integer" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" }
-      },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The [List GitHub Pages builds](https://docs.github.com/en/rest/reference/repos#list-github-pages-builds) itself."
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "id": {
+      "type": "integer"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "id",
+    "build",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
-  "title": "page_build event"
+  "title": "page_build event",
+  "description": "Page Build"
 }

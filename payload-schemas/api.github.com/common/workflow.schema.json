@@ -1,6 +1,47 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/workflow.schema.json",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "badge_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "html_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "node_id": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
   "required": [
     "badge_url",
     "created_at",
@@ -13,19 +54,6 @@
     "updated_at",
     "url"
   ],
-  "type": "object",
-  "properties": {
-    "badge_url": { "type": "string", "format": "uri" },
-    "created_at": { "type": "string", "format": "date-time" },
-    "html_url": { "type": "string", "format": "uri" },
-    "id": { "type": "integer" },
-    "name": { "type": "string" },
-    "node_id": { "type": "string" },
-    "path": { "type": "string" },
-    "state": { "type": "string" },
-    "updated_at": { "type": "string", "format": "date-time" },
-    "url": { "type": "string", "format": "uri" }
-  },
   "additionalProperties": false,
   "title": "Workflow"
 }

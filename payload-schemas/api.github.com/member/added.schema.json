@@ -2,33 +2,60 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "member$added",
   "type": "object",
-  "description": "Activity related to repository collaborators. The type of activity is specified in the action property.",
-  "required": ["action", "member", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["added"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "added"
+      ]
+    },
     "changes": {
       "type": "object",
       "properties": {
         "permission": {
           "type": "object",
-          "required": ["to"],
           "properties": {
-            "to": { "type": "string", "enum": ["write", "admin"] }
+            "to": {
+              "type": "string",
+              "enum": [
+                "write",
+                "admin",
+                "read"
+              ]
+            }
           },
+          "required": [
+            "to"
+          ],
           "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
     "member": {
       "$ref": "common/user.schema.json",
       "description": "The user that was added."
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" }
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "member",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
-  "title": "member added event"
+  "title": "member added event",
+  "description": "Activity related to repository collaborators. The type of activity is specified in the action property."
 }

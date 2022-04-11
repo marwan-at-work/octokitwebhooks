@@ -2,70 +2,88 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "deployment_status$created",
   "type": "object",
-  "required": [
-    "action",
-    "deployment_status",
-    "deployment",
-    "repository",
-    "sender"
-  ],
   "properties": {
-    "action": { "type": "string", "enum": ["created"] },
-    "deployment_status": {
-      "type": "object",
-      "description": "The [deployment status](https://docs.github.com/en/rest/reference/deployments#list-deployment-statuses).",
-      "required": [
-        "url",
-        "id",
-        "node_id",
-        "state",
-        "creator",
-        "description",
-        "environment",
-        "target_url",
-        "created_at",
-        "updated_at",
-        "deployment_url",
-        "repository_url"
+    "action": {
+      "type": "string",
+      "enum": [
+        "created"
+      ]
+    },
+    "check_run": {
+      "type": [
+        "object",
+        "null"
       ],
       "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "state": {
+        "completed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "conclusion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            null
+          ],
+          "description": "The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed."
+        },
+        "details_url": {
           "type": "string",
-          "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
+          "format": "uri"
         },
-        "creator": { "$ref": "common/user.schema.json" },
-        "description": {
+        "external_id": {
+          "type": "string"
+        },
+        "head_sha": {
           "type": "string",
-          "description": "The optional human-readable description added to the status."
+          "description": "The SHA of the commit that is being checked."
         },
-        "environment": { "type": "string" },
-        "environment_url": {
-          "oneOf": [
-            { "type": "string", "format": "uri" },
-            { "type": "string", "enum": [""] }
-          ]
-        },
-        "log_url": { "type": "string", "format": "uri" },
-        "target_url": {
+        "html_url": {
           "type": "string",
-          "description": "The optional link added to the status."
+          "format": "uri"
         },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "deployment_url": { "type": "string", "format": "uri" },
-        "repository_url": { "type": "string", "format": "uri" },
-        "performed_via_github_app": {
-          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
+        "id": {
+          "type": "integer",
+          "description": "The id of the check."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the check run."
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "queued",
+            "in_progress",
+            "completed"
+          ],
+          "description": "The current status of the check run. Can be `queued`, `in_progress`, or `completed`."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
         }
       },
-      "additionalProperties": false
-    },
-    "deployment": { "$ref": "common/deployment.schema.json" },
-    "check_run": {
-      "type": "object",
       "required": [
         "id",
         "name",
@@ -80,53 +98,128 @@
         "started_at",
         "completed_at"
       ],
-      "properties": {
-        "id": { "type": "integer", "description": "The id of the check." },
-        "name": {
-          "type": "string",
-          "description": "The name of the check run."
-        },
-        "node_id": { "type": "string" },
-        "head_sha": {
-          "type": "string",
-          "description": "The SHA of the commit that is being checked."
-        },
-        "external_id": { "type": "string" },
-        "url": { "type": "string", "format": "uri" },
-        "html_url": { "type": "string", "format": "uri" },
-        "details_url": { "type": "string", "format": "uri" },
-        "status": {
-          "type": "string",
-          "enum": ["queued", "in_progress", "completed"],
-          "description": "The current status of the check run. Can be `queued`, `in_progress`, or `completed`."
-        },
-        "conclusion": {
-          "type": ["string", "null"],
-          "enum": [
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-            "skipped",
-            null
-          ],
-          "description": "The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed."
-        },
-        "started_at": { "type": "string", "format": "date-time" },
-        "completed_at": { "type": ["string", "null"], "format": "date-time" }
-      },
       "additionalProperties": false
     },
-    "workflow_run": { "$ref": "common/deployment-workflow-run.schema.json" },
-    "workflow": { "$ref": "common/workflow.schema.json" },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "deployment": {
+      "$ref": "common/deployment.schema.json"
+    },
+    "deployment_status": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "creator": {
+          "$ref": "common/user.schema.json"
+        },
+        "deployment_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "The optional human-readable description added to the status."
+        },
+        "environment": {
+          "type": "string"
+        },
+        "environment_url": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          ]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "log_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "performed_via_github_app": {
+          "oneOf": [
+            {
+              "$ref": "common/app.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "repository_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "state": {
+          "type": "string",
+          "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
+        },
+        "target_url": {
+          "type": "string",
+          "description": "The optional link added to the status."
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "url",
+        "id",
+        "node_id",
+        "state",
+        "creator",
+        "description",
+        "environment",
+        "target_url",
+        "created_at",
+        "updated_at",
+        "deployment_url",
+        "repository_url"
+      ],
+      "additionalProperties": false,
+      "description": "The [deployment status](https://docs.github.com/en/rest/reference/deployments#list-deployment-statuses)."
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "workflow": {
+      "$ref": "common/workflow.schema.json"
+    },
+    "workflow_run": {
+      "$ref": "common/deployment-workflow-run.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "deployment_status",
+    "deployment",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "deployment_status created event"
 }

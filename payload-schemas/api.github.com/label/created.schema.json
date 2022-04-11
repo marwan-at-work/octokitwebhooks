@@ -2,18 +2,35 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "label$created",
   "type": "object",
-  "required": ["action", "label", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["created"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "created"
+      ]
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
     "label": {
       "$ref": "common/label.schema.json",
       "description": "The label that was added."
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "label",
+    "repository"
+  ],
   "additionalProperties": false,
   "title": "label created event"
 }

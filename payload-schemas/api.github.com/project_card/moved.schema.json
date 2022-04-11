@@ -2,38 +2,73 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "project_card$moved",
   "type": "object",
-  "required": ["action", "changes", "project_card", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["moved"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "moved"
+      ]
+    },
     "changes": {
       "type": "object",
-      "required": ["column_id"],
       "properties": {
         "column_id": {
           "type": "object",
-          "required": ["from"],
-          "properties": { "from": { "type": "integer" } },
+          "properties": {
+            "from": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         }
       },
+      "required": [
+        "column_id"
+      ],
       "additionalProperties": false
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
     },
     "project_card": {
       "allOf": [
-        { "$ref": "common/project-card.schema.json" },
+        {
+          "$ref": "common/project-card.schema.json"
+        },
         {
           "type": "object",
-          "required": ["after_id"],
-          "properties": { "after_id": { "type": ["number", "null"] } },
-          "tsAdditionalProperties": false
+          "properties": {
+            "after_id": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "after_id"
+          ]
         }
       ]
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" }
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "project_card",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "project_card moved event"
 }

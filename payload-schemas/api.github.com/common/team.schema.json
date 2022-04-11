@@ -1,45 +1,94 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/team.schema.json",
-  "description": "Groups of organization members that gives permissions on specified repositories.",
   "type": "object",
-  "required": [
-    "name",
-    "id",
-    "node_id",
-    "slug",
-    "description",
-    "privacy",
-    "url",
-    "html_url",
-    "members_url",
-    "repositories_url",
-    "permission"
-  ],
   "properties": {
-    "name": { "type": "string", "description": "Name of the team" },
-    "id": { "type": "integer", "description": "Unique identifier of the team" },
-    "node_id": { "type": "string" },
-    "slug": { "type": "string" },
+    "deleted": {
+      "type": "boolean"
+    },
     "description": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Description of the team"
     },
-    "privacy": { "type": "string", "enum": ["open", "closed", "secret"] },
-    "url": {
+    "html_url": {
       "type": "string",
-      "format": "uri",
-      "description": "URL for the team"
+      "format": "uri"
     },
-    "html_url": { "type": "string", "format": "uri" },
-    "members_url": { "type": "string", "format": "uri-template" },
-    "repositories_url": { "type": "string", "format": "uri" },
-    "permission": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the team"
+    },
+    "members_url": {
       "type": "string",
-      "description": "Permission that the team will have for its repositories"
+      "format": "uri-template"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the team"
+    },
+    "node_id": {
+      "type": "string"
     },
     "parent": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Description of the team"
+        },
+        "html_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of the team"
+        },
+        "members_url": {
+          "type": "string",
+          "format": "uri-template"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the team"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "string",
+          "description": "Permission that the team will have for its repositories"
+        },
+        "privacy": {
+          "type": "string",
+          "enum": [
+            "open",
+            "closed",
+            "secret"
+          ]
+        },
+        "repositories_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL for the team",
+          "format": "uri"
+        }
+      },
       "required": [
         "name",
         "id",
@@ -53,35 +102,38 @@
         "repositories_url",
         "permission"
       ],
-      "properties": {
-        "name": { "type": "string", "description": "Name of the team" },
-        "id": {
-          "type": "integer",
-          "description": "Unique identifier of the team"
-        },
-        "node_id": { "type": "string" },
-        "slug": { "type": "string" },
-        "description": {
-          "type": ["string", "null"],
-          "description": "Description of the team"
-        },
-        "privacy": { "type": "string", "enum": ["open", "closed", "secret"] },
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "description": "URL for the team"
-        },
-        "html_url": { "type": "string", "format": "uri" },
-        "members_url": { "type": "string", "format": "uri-template" },
-        "repositories_url": { "type": "string", "format": "uri" },
-        "permission": {
-          "type": "string",
-          "description": "Permission that the team will have for its repositories"
-        }
-      },
       "additionalProperties": false
+    },
+    "permission": {
+      "type": "string",
+      "description": "Permission that the team will have for its repositories"
+    },
+    "privacy": {
+      "type": "string",
+      "enum": [
+        "open",
+        "closed",
+        "secret"
+      ]
+    },
+    "repositories_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL for the team",
+      "format": "uri"
     }
   },
+  "required": [
+    "name",
+    "id"
+  ],
   "additionalProperties": false,
-  "title": "Team"
+  "title": "Team",
+  "description": "Groups of organization members that gives permissions on specified repositories."
 }

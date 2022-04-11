@@ -1,8 +1,411 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/repository.schema.json",
-  "description": "A git repository",
   "type": "object",
+  "properties": {
+    "allow_auto_merge": {
+      "type": "boolean",
+      "description": "Whether to allow auto-merge for pull requests.",
+      "default": false
+    },
+    "allow_forking": {
+      "type": "boolean",
+      "description": "Whether to allow private forks"
+    },
+    "allow_merge_commit": {
+      "type": "boolean",
+      "description": "Whether to allow merge commits for pull requests.",
+      "default": true
+    },
+    "allow_rebase_merge": {
+      "type": "boolean",
+      "description": "Whether to allow rebase merges for pull requests.",
+      "default": true
+    },
+    "allow_squash_merge": {
+      "type": "boolean",
+      "description": "Whether to allow squash merges for pull requests.",
+      "default": true
+    },
+    "allow_update_branch": {
+      "type": "boolean"
+    },
+    "archive_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "archived": {
+      "type": "boolean",
+      "description": "Whether the repository is archived.",
+      "default": false
+    },
+    "assignees_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "blobs_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "branches_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "clone_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "collaborators_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "comments_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "commits_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "compare_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "contents_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "contributors_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "created_at": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "default_branch": {
+      "type": "string",
+      "description": "The default branch of the repository."
+    },
+    "delete_branch_on_merge": {
+      "type": "boolean",
+      "description": "Whether to delete head branches when pull requests are merged",
+      "default": false
+    },
+    "deployments_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Returns whether or not this repository is disabled."
+    },
+    "downloads_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "events_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "fork": {
+      "type": "boolean"
+    },
+    "forks": {
+      "type": "integer"
+    },
+    "forks_count": {
+      "type": "integer"
+    },
+    "forks_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "git_commits_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "git_refs_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "git_tags_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "git_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "has_downloads": {
+      "type": "boolean",
+      "description": "Whether downloads are enabled.",
+      "default": true
+    },
+    "has_issues": {
+      "type": "boolean",
+      "description": "Whether issues are enabled.",
+      "default": true
+    },
+    "has_pages": {
+      "type": "boolean"
+    },
+    "has_projects": {
+      "type": "boolean",
+      "description": "Whether projects are enabled.",
+      "default": true
+    },
+    "has_wiki": {
+      "type": "boolean",
+      "description": "Whether the wiki is enabled.",
+      "default": true
+    },
+    "homepage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hooks_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "html_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the repository"
+    },
+    "is_template": {
+      "type": "boolean"
+    },
+    "issue_comment_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "issue_events_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "issues_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "keys_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "labels_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "languages_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "oneOf": [
+        {
+          "$ref": "license.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "master_branch": {
+      "type": "string"
+    },
+    "merges_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "milestones_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "mirror_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the repository."
+    },
+    "node_id": {
+      "type": "string"
+    },
+    "notifications_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "open_issues": {
+      "type": "integer"
+    },
+    "open_issues_count": {
+      "type": "integer"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "user.schema.json"
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "admin": {
+          "type": "boolean"
+        },
+        "maintain": {
+          "type": "boolean"
+        },
+        "pull": {
+          "type": "boolean"
+        },
+        "push": {
+          "type": "boolean"
+        },
+        "triage": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "pull",
+        "push",
+        "admin"
+      ],
+      "additionalProperties": false
+    },
+    "private": {
+      "type": "boolean",
+      "description": "Whether the repository is private or public."
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "pulls_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "pushed_at": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "releases_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "size": {
+      "type": "integer"
+    },
+    "ssh_url": {
+      "type": "string"
+    },
+    "stargazers": {
+      "type": "integer"
+    },
+    "stargazers_count": {
+      "type": "integer"
+    },
+    "stargazers_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "statuses_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "subscribers_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "subscription_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "svn_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "tags_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "teams_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trees_url": {
+      "type": "string",
+      "format": "uri-template"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "public",
+        "private",
+        "internal"
+      ]
+    },
+    "watchers": {
+      "type": "integer"
+    },
+    "watchers_count": {
+      "type": "integer"
+    }
+  },
   "required": [
     "id",
     "node_id",
@@ -76,182 +479,10 @@
     "open_issues",
     "watchers",
     "default_branch",
-    "is_template",
     "topics",
     "visibility"
   ],
-  "properties": {
-    "id": {
-      "type": "integer",
-      "description": "Unique identifier of the repository"
-    },
-    "node_id": { "type": "string" },
-    "name": { "type": "string", "description": "The name of the repository." },
-    "full_name": { "type": "string" },
-    "private": {
-      "type": "boolean",
-      "description": "Whether the repository is private or public."
-    },
-    "owner": { "$ref": "user.schema.json" },
-    "html_url": { "type": "string", "format": "uri" },
-    "description": { "type": ["string", "null"] },
-    "fork": { "type": "boolean" },
-    "url": { "type": "string", "format": "uri" },
-    "forks_url": { "type": "string", "format": "uri" },
-    "keys_url": { "type": "string", "format": "uri-template" },
-    "collaborators_url": { "type": "string", "format": "uri-template" },
-    "teams_url": { "type": "string", "format": "uri" },
-    "hooks_url": { "type": "string", "format": "uri" },
-    "issue_events_url": { "type": "string", "format": "uri-template" },
-    "events_url": { "type": "string", "format": "uri" },
-    "assignees_url": { "type": "string", "format": "uri-template" },
-    "branches_url": { "type": "string", "format": "uri-template" },
-    "tags_url": { "type": "string", "format": "uri" },
-    "blobs_url": { "type": "string", "format": "uri-template" },
-    "git_tags_url": { "type": "string", "format": "uri-template" },
-    "git_refs_url": { "type": "string", "format": "uri-template" },
-    "trees_url": { "type": "string", "format": "uri-template" },
-    "statuses_url": { "type": "string", "format": "uri-template" },
-    "languages_url": { "type": "string", "format": "uri" },
-    "stargazers_url": { "type": "string", "format": "uri" },
-    "contributors_url": { "type": "string", "format": "uri" },
-    "subscribers_url": { "type": "string", "format": "uri" },
-    "subscription_url": { "type": "string", "format": "uri" },
-    "commits_url": { "type": "string", "format": "uri-template" },
-    "git_commits_url": { "type": "string", "format": "uri-template" },
-    "comments_url": { "type": "string", "format": "uri-template" },
-    "issue_comment_url": { "type": "string", "format": "uri-template" },
-    "contents_url": { "type": "string", "format": "uri-template" },
-    "compare_url": { "type": "string", "format": "uri-template" },
-    "merges_url": { "type": "string", "format": "uri" },
-    "archive_url": { "type": "string", "format": "uri-template" },
-    "downloads_url": { "type": "string", "format": "uri" },
-    "issues_url": { "type": "string", "format": "uri-template" },
-    "pulls_url": { "type": "string", "format": "uri-template" },
-    "milestones_url": { "type": "string", "format": "uri-template" },
-    "notifications_url": { "type": "string", "format": "uri-template" },
-    "labels_url": { "type": "string", "format": "uri-template" },
-    "releases_url": { "type": "string", "format": "uri-template" },
-    "deployments_url": { "type": "string", "format": "uri" },
-    "created_at": {
-      "oneOf": [
-        { "type": "integer" },
-        { "type": "string", "format": "date-time" }
-      ]
-    },
-    "updated_at": { "type": "string", "format": "date-time" },
-    "pushed_at": {
-      "oneOf": [
-        { "type": "integer" },
-        { "type": "string", "format": "date-time" },
-        { "type": "null" }
-      ]
-    },
-    "git_url": { "type": "string", "format": "uri" },
-    "ssh_url": { "type": "string" },
-    "clone_url": { "type": "string", "format": "uri" },
-    "svn_url": { "type": "string", "format": "uri" },
-    "homepage": { "type": ["string", "null"] },
-    "size": { "type": "integer" },
-    "stargazers_count": { "type": "integer" },
-    "watchers_count": { "type": "integer" },
-    "language": { "type": ["string", "null"] },
-    "has_issues": {
-      "type": "boolean",
-      "description": "Whether issues are enabled.",
-      "default": true
-    },
-    "has_projects": {
-      "type": "boolean",
-      "description": "Whether projects are enabled.",
-      "default": true
-    },
-    "has_downloads": {
-      "type": "boolean",
-      "description": "Whether downloads are enabled.",
-      "default": true
-    },
-    "has_wiki": {
-      "type": "boolean",
-      "description": "Whether the wiki is enabled.",
-      "default": true
-    },
-    "has_pages": { "type": "boolean" },
-    "forks_count": { "type": "integer" },
-    "mirror_url": { "type": ["string", "null"], "format": "uri" },
-    "archived": {
-      "type": "boolean",
-      "description": "Whether the repository is archived.",
-      "default": false
-    },
-    "disabled": {
-      "type": "boolean",
-      "description": "Returns whether or not this repository is disabled."
-    },
-    "open_issues_count": { "type": "integer" },
-    "license": {
-      "oneOf": [{ "$ref": "license.schema.json" }, { "type": "null" }]
-    },
-    "forks": { "type": "integer" },
-    "open_issues": { "type": "integer" },
-    "watchers": { "type": "integer" },
-    "stargazers": { "type": "integer" },
-    "default_branch": {
-      "type": "string",
-      "description": "The default branch of the repository."
-    },
-    "allow_squash_merge": {
-      "type": "boolean",
-      "description": "Whether to allow squash merges for pull requests.",
-      "default": true
-    },
-    "allow_merge_commit": {
-      "type": "boolean",
-      "description": "Whether to allow merge commits for pull requests.",
-      "default": true
-    },
-    "allow_rebase_merge": {
-      "type": "boolean",
-      "description": "Whether to allow rebase merges for pull requests.",
-      "default": true
-    },
-    "allow_auto_merge": {
-      "type": "boolean",
-      "description": "Whether to allow auto-merge for pull requests.",
-      "default": false
-    },
-    "allow_forking": {
-      "type": "boolean",
-      "description": "Whether to allow private forks"
-    },
-    "allow_update_branch": { "type": "boolean" },
-    "is_template": { "type": "boolean" },
-    "topics": { "type": "array", "items": { "type": "string" } },
-    "visibility": {
-      "type": "string",
-      "enum": ["public", "private", "internal"]
-    },
-    "delete_branch_on_merge": {
-      "type": "boolean",
-      "description": "Whether to delete head branches when pull requests are merged",
-      "default": false
-    },
-    "master_branch": { "type": "string" },
-    "permissions": {
-      "type": "object",
-      "required": ["pull", "push", "admin"],
-      "properties": {
-        "pull": { "type": "boolean" },
-        "push": { "type": "boolean" },
-        "admin": { "type": "boolean" },
-        "maintain": { "type": "boolean" },
-        "triage": { "type": "boolean" }
-      },
-      "additionalProperties": false
-    },
-    "public": { "type": "boolean" },
-    "organization": { "type": "string" }
-  },
   "additionalProperties": false,
-  "title": "Repository"
+  "title": "Repository",
+  "description": "A git repository"
 }

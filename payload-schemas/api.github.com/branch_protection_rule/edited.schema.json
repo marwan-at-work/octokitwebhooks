@@ -2,79 +2,153 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "branch_protection_rule$edited",
   "type": "object",
-  "description": "Activity related to a branch protection rule. For more information, see \"[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules).\"",
-  "required": ["action", "rule", "changes", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["edited"] },
-    "rule": { "$ref": "common/branch-protection-rule.schema.json" },
+    "action": {
+      "type": "string",
+      "enum": [
+        "edited"
+      ]
+    },
     "changes": {
       "type": "object",
-      "description": "If the action was `edited`, the changes to the rule.",
       "properties": {
-        "authorized_actors_only": {
+        "admin_enforced": {
           "type": "object",
-          "required": ["from"],
-          "properties": { "from": { "type": "boolean" } },
+          "properties": {
+            "from": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         },
         "authorized_actor_names": {
           "type": "object",
-          "required": ["from"],
           "properties": {
-            "from": { "type": "array", "items": { "type": "string" } }
+            "from": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         },
-        "required_status_checks": {
+        "authorized_actors_only": {
           "type": "object",
-          "required": ["from"],
           "properties": {
-            "from": { "type": "array", "items": { "type": "string" } }
+            "from": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
           },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         },
         "authorized_dismissal_actors_only": {
           "type": "object",
-          "required": ["from"],
-          "properties": { "from": { "type": ["boolean", "null"] } },
-          "additionalProperties": false
-        },
-        "required_status_checks_enforcement_level": {
-          "type": "object",
-          "required": ["from"],
           "properties": {
             "from": {
-              "type": "string",
-              "enum": ["off", "non_admins", "everyone"]
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         },
         "linear_history_requirement_enforcement_level": {
           "type": "object",
-          "required": ["from"],
           "properties": {
             "from": {
               "type": "string",
-              "enum": ["off", "non_admins", "everyone"]
+              "enum": [
+                "off",
+                "non_admins",
+                "everyone"
+              ]
             }
           },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         },
-        "admin_enforced": {
+        "required_status_checks": {
           "type": "object",
-          "required": ["from"],
-          "properties": { "from": { "type": ["boolean", "null"] } },
+          "properties": {
+            "from": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "from"
+          ],
+          "additionalProperties": false
+        },
+        "required_status_checks_enforcement_level": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": [
+                "off",
+                "non_admins",
+                "everyone"
+              ]
+            }
+          },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "If the action was `edited`, the changes to the rule."
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "rule": {
+      "$ref": "common/branch-protection-rule.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "rule",
+    "changes",
+    "repository",
+    "sender"
+  ],
+  "additionalProperties": false,
   "title": "branch protection rule edited event",
-  "additionalProperties": false
+  "description": "Activity related to a branch protection rule. For more information, see \"[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules).\""
 }

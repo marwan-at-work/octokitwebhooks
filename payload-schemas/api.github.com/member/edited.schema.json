@@ -2,40 +2,60 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "member$edited",
   "type": "object",
-  "required": ["action", "changes", "member", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["edited"] },
-    "member": {
-      "$ref": "common/user.schema.json",
-      "description": "The user who's permissions are changed."
+    "action": {
+      "type": "string",
+      "enum": [
+        "edited"
+      ]
     },
     "changes": {
       "type": "object",
-      "description": "The changes to the collaborator permissions",
-      "required": ["old_permission"],
       "properties": {
-        "permission": {
-          "type": "object"
-        },
         "old_permission": {
           "type": "object",
-          "required": ["from"],
           "properties": {
             "from": {
               "type": "string",
               "description": "The previous permissions of the collaborator if the action was edited."
             }
           },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
+        },
+        "permission": {
+          "type": "object"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The changes to the collaborator permissions"
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" }
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "member": {
+      "$ref": "common/user.schema.json",
+      "description": "The user who's permissions are changed."
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "changes",
+    "member",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "member edited event"
 }

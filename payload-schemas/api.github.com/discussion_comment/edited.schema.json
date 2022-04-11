@@ -2,32 +2,80 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "discussion_comment$edited",
   "type": "object",
-  "required": [
-    "action",
-    "changes",
-    "comment",
-    "discussion",
-    "repository",
-    "sender",
-    "installation"
-  ],
   "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "edited"
+      ]
+    },
     "changes": {
       "type": "object",
-      "required": ["body"],
       "properties": {
         "body": {
           "type": "object",
-          "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         }
       },
+      "required": [
+        "body"
+      ],
       "additionalProperties": false
     },
-    "action": { "type": "string", "enum": ["edited"] },
     "comment": {
       "type": "object",
+      "properties": {
+        "author_association": {
+          "$ref": "common/author_association.schema.json"
+        },
+        "body": {
+          "type": "string"
+        },
+        "child_comment_count": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "discussion_id": {
+          "type": "integer"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "parent_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "reactions": {
+          "$ref": "common/reactions.schema.json"
+        },
+        "repository_url": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "common/user.schema.json"
+        }
+      },
       "required": [
         "id",
         "node_id",
@@ -43,31 +91,32 @@
         "body",
         "reactions"
       ],
-      "properties": {
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "html_url": { "type": "string" },
-        "parent_id": { "type": ["integer", "null"] },
-        "child_comment_count": { "type": "integer" },
-        "repository_url": { "type": "string" },
-        "discussion_id": { "type": "integer" },
-        "author_association": {
-          "$ref": "common/author_association.schema.json"
-        },
-        "user": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "body": { "type": "string" },
-        "reactions": { "$ref": "common/reactions.schema.json" }
-      },
       "additionalProperties": false
     },
-    "discussion": { "$ref": "common/discussion.schema.json" },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "discussion": {
+      "$ref": "common/discussion.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "changes",
+    "comment",
+    "discussion",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "discussion_comment edited event"
 }
