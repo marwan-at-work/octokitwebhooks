@@ -213,6 +213,9 @@
               ],
               "additionalProperties": false
             },
+            "rubygems_metadata": {
+              "type": "array"
+            },
             "source_url": {
               "type": "string",
               "format": "uri"
@@ -250,7 +253,6 @@
             "created_at",
             "updated_at",
             "metadata",
-            "docker_metadata",
             "package_files",
             "author",
             "installation_command"

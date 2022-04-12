@@ -2,14 +2,34 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "repository$deleted",
   "type": "object",
-  "required": ["action", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["deleted"] },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "action": {
+      "type": "string",
+      "enum": [
+        "deleted"
+      ]
+    },
+    "enterprise": {
+      "type": "object"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "repository deleted event"
 }
