@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "merge_queue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "node_id"
+      ]
+    },
+    "merge_queue_entry": {
+      "oneOf": [
+          {"type": "null"},
+          {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "is_solo": {
+                    "type": "boolean"
+                },
+                "node_id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "is_solo",
+                "node_id"
+            ]
+        }
+      ]
+    },
+    "pull_request": { "$ref": "common/pull-request.schema.json" },
+    "message": {
+      "type": ["string", "null"]
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
+  },
+  "required": [
+    "action",
+    "merge_queue",
+    "merge_queue_entry",
+    "pull_request",
+    "message"
+  ]
+}

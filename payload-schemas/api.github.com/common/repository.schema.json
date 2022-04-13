@@ -334,7 +334,7 @@
       "format": "uri-template"
     },
     "role_name": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "size": {
       "type": "integer"

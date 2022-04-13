@@ -1,0 +1,261 @@
+{
+    "type": "object",
+    "properties": {
+        "action": {
+            "type": "string",
+            "enum": [
+                "create"
+            ]
+        },
+        "package": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "ecosystem": {
+                    "type": "string"
+                },
+                "html_url": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "package_version": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "blob_store": {
+                            "type": "string"
+                        },
+                        "html_url": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string"
+                        },
+                        "updated_at": {
+                            "type": "string"
+                        },
+                        "container_metadata": {
+                            "type": "object",
+                            "properties": {
+                                "tag": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "digest": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "digest"
+                                    ]
+                                },
+                                "labels": {
+                                    "type": "object",
+                                    "properties": {
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "source": {
+                                            "type": "string"
+                                        },
+                                        "revision": {
+                                            "type": "string"
+                                        },
+                                        "image_url": {
+                                            "type": "string"
+                                        },
+                                        "licenses": {
+                                            "type": "string"
+                                        },
+                                        "all_labels": {
+                                            "type": "object",
+                                            "properties": {
+                                                "org.opencontainers.image.source": {
+                                                    "type": "string"
+                                                },
+                                                "org.opencontainers.image.revision": {
+                                                    "type": "string"
+                                                },
+                                                "org.opencontainers.image.created": {
+                                                    "type": "string"
+                                                },
+                                                "org.opencontainers.image.description": {
+                                                    "type": "string"
+                                                },
+                                                "com.github.repo.branch": {
+                                                    "type": "string"
+                                                },
+                                                "org.opencontainers.image.documentation": {
+                                                    "type": "string"
+                                                },
+                                                "com.github.base_image.repo_digest": {
+                                                    "type": "string"
+                                                },
+                                                "ghes.licenses.path": {
+                                                    "type": "string"
+                                                },
+                                                "com.github.base_image.id": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "org.opencontainers.image.source",
+                                                "org.opencontainers.image.revision",
+                                                "org.opencontainers.image.created",
+                                                "org.opencontainers.image.description",
+                                                "com.github.repo.branch",
+                                                "org.opencontainers.image.documentation",
+                                                "com.github.base_image.repo_digest",
+                                                "ghes.licenses.path",
+                                                "com.github.base_image.id"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "description",
+                                        "source",
+                                        "revision",
+                                        "image_url",
+                                        "licenses",
+                                        "all_labels"
+                                    ]
+                                },
+                                "manifest": {
+                                    "type": "object",
+                                    "properties": {
+                                        "digest": {
+                                            "type": "string"
+                                        },
+                                        "media_type": {
+                                            "type": "string"
+                                        },
+                                        "uri": {
+                                            "type": "string"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "config": {
+                                            "type": "object",
+                                            "properties": {
+                                                "digest": {
+                                                    "type": "string"
+                                                },
+                                                "media_type": {
+                                                    "type": "string"
+                                                },
+                                                "size": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "digest",
+                                                "media_type",
+                                                "size"
+                                            ]
+                                        },
+                                        "layers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "digest": {
+                                                        "type": "string"
+                                                    },
+                                                    "media_type": {
+                                                        "type": "string"
+                                                    },
+                                                    "size": {
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "digest",
+                                                    "media_type",
+                                                    "size"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "digest",
+                                        "media_type",
+                                        "uri",
+                                        "size",
+                                        "config",
+                                        "layers"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "tag",
+                                "labels",
+                                "manifest"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "description",
+                        "blob_store",
+                        "html_url",
+                        "created_at",
+                        "updated_at",
+                        "container_metadata"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "namespace",
+                "description",
+                "ecosystem",
+                "html_url",
+                "created_at",
+                "updated_at",
+                "package_version"
+            ]
+        },
+        "sender": {
+            "$ref": "common/user.schema.json"
+        },
+        "organization": {
+            "$ref": "common/organization.schema.json"
+        }
+    },
+    "required": [
+        "action",
+        "package",
+        "organization",
+        "sender"
+    ]
+}

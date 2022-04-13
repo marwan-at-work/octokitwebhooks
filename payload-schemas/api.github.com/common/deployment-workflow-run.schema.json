@@ -9,10 +9,19 @@
     "actor": {
       "$ref": "user.schema.json"
     },
+    "artifacts_url": {
+      "type": "string"
+    },
+    "cancel_url": {
+      "type": "string"
+    },
     "check_suite_id": {
       "type": "integer"
     },
     "check_suite_node_id": {
+      "type": "string"
+    },
+    "check_suite_url": {
       "type": "string"
     },
     "conclusion": {
@@ -41,6 +50,12 @@
     "head_branch": {
       "type": "string"
     },
+    "head_commit": {
+      "type": "null"
+    },
+    "head_repository": {
+      "type": "object"
+    },
     "head_sha": {
       "type": "string"
     },
@@ -51,17 +66,32 @@
     "id": {
       "type": "integer"
     },
+    "jobs_url": {
+      "type": "string"
+    },
+    "logs_url": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },
     "node_id": {
       "type": "string"
     },
+    "previous_attempt_url": {
+      "type": "null"
+    },
     "pull_requests": {
       "type": "array",
       "items": {
         "$ref": "check-run-pull-request.schema.json"
       }
+    },
+    "repository": {
+      "type": "object"
+    },
+    "rerun_url": {
+      "type": "string"
     },
     "run_attempt": {
       "type": "integer"
@@ -79,7 +109,8 @@
         "requested",
         "in_progress",
         "completed",
-        "queued"
+        "queued",
+        "waiting"
       ]
     },
     "triggering_actor": {
@@ -95,6 +126,9 @@
     },
     "workflow_id": {
       "type": "integer"
+    },
+    "workflow_url": {
+      "type": "string"
     }
   },
   "required": [

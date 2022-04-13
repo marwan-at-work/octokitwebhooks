@@ -1,0 +1,103 @@
+{
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "rejected"
+      ]
+    },
+    "comment": {
+      "type": "string"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "reviewers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reviewer": {
+            "$ref": "common/user.schema.json"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "User"
+            ]
+          }
+        }
+      }
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "since": {
+      "type": "string"
+    },
+    "workflow_job_run": {
+      "type": "object",
+      "properties": {
+        "conclusion": {
+          "type": "null"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "null"
+        },
+        "status": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "status",
+        "conclusion",
+        "html_url",
+        "created_at",
+        "updated_at",
+        "environment"
+      ]
+    },
+    "workflow_run": {
+      "oneOf": [
+        {
+          "$ref": "common/deployment-workflow-run.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "action",
+    "workflow_run",
+    "since",
+    "repository",
+    "organization",
+    "sender"
+  ]
+}

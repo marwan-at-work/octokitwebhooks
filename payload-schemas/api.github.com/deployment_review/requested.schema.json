@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["requested"]
+    },
+    "workflow_run": {
+      "oneOf": [
+        { "$ref": "common/deployment-workflow-run.schema.json" },
+        { "type": "null" }
+      ]
+    },
+    "since": {
+      "type": "string"
+    },
+    "workflow_job_run": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "null"
+        },
+        "status": {
+          "type": "string"
+        },
+        "conclusion": {
+          "type": "null"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "status",
+        "conclusion",
+        "html_url",
+        "created_at",
+        "updated_at",
+        "environment"
+      ]
+    },
+    "environment": {
+      "type": "string"
+    },
+    "reviewers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["User"]
+          },
+          "reviewer": { "$ref": "common/user.schema.json" }
+        }
+      }
+    },
+    "requestor": { "$ref": "common/user.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "required": [
+    "action",
+    "workflow_run",
+    "since",
+    "workflow_job_run",
+    "environment",
+    "reviewers",
+    "requestor",
+    "repository",
+    "organization",
+    "sender"
+  ]
+}

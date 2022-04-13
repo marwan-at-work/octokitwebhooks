@@ -1,0 +1,366 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "published"
+      ]
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "registry_package": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": "null"
+        },
+        "ecosystem": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "object",
+          "properties": {
+            "avatar_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "followers_url": {
+              "type": "string"
+            },
+            "following_url": {
+              "type": "string"
+            },
+            "gists_url": {
+              "type": "string"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "login": {
+              "type": "string"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string"
+            },
+            "received_events_url": {
+              "type": "string"
+            },
+            "repos_url": {
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            },
+            "starred_url": {
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "login",
+            "id",
+            "node_id",
+            "avatar_url",
+            "gravatar_id",
+            "url",
+            "html_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "starred_url",
+            "subscriptions_url",
+            "organizations_url",
+            "repos_url",
+            "events_url",
+            "received_events_url",
+            "type",
+            "site_admin"
+          ]
+        },
+        "package_type": {
+          "type": "string"
+        },
+        "package_version": {
+          "type": "object",
+          "properties": {
+            "author": {
+              "type": "object",
+              "properties": {
+                "avatar_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "login": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "login",
+                "id",
+                "node_id",
+                "avatar_url",
+                "gravatar_id",
+                "url",
+                "html_url",
+                "followers_url",
+                "following_url",
+                "gists_url",
+                "starred_url",
+                "subscriptions_url",
+                "organizations_url",
+                "repos_url",
+                "events_url",
+                "received_events_url",
+                "type",
+                "site_admin"
+              ]
+            },
+            "body": {
+              "type": "string"
+            },
+            "body_html": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "docker_metadata": {
+              "type": "array",
+              "items": {}
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "installation_command": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "array",
+              "items": {}
+            },
+            "name": {
+              "type": "string"
+            },
+            "package_files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "content_type": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "download_url": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "md5": {
+                    "type": "null"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sha1": {
+                    "type": "null"
+                  },
+                  "sha256": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "size": {
+                    "type": "integer"
+                  },
+                  "state": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "download_url",
+                  "id",
+                  "name",
+                  "sha256",
+                  "sha1",
+                  "md5",
+                  "content_type",
+                  "state",
+                  "size",
+                  "created_at",
+                  "updated_at"
+                ]
+              }
+            },
+            "package_url": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "target_commitish": {
+              "type": "string"
+            },
+            "target_oid": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "name",
+            "description",
+            "summary",
+            "html_url",
+            "metadata",
+            "package_files",
+            "installation_command",
+            "package_url"
+          ]
+        },
+        "registry": {
+          "type": "null"
+        },
+        "updated_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "namespace",
+        "description",
+        "ecosystem",
+        "package_type",
+        "html_url",
+        "created_at",
+        "updated_at",
+        "owner",
+        "package_version",
+        "registry"
+      ]
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
+  },
+  "required": [
+    "action",
+    "registry_package",
+    "sender"
+  ]
+}
