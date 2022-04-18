@@ -229,7 +229,8 @@
               "additionalProperties": false
             },
             "rubygems_metadata": {
-              "type": "array"
+              "type": "array",
+              "items": {}
             },
             "source_url": {
               "type": "string"

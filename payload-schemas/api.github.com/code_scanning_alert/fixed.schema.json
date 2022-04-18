@@ -125,7 +125,7 @@
       "description": "The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     },
     "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/github-org.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
   },

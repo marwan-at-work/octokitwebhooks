@@ -83,7 +83,8 @@
       "enum": ["off", "non_admins", "everyone"]
     },
     "authorized_actors_only": { "type": "boolean" },
-    "authorized_actor_names": { "type": "array", "items": { "type": "string" } }
+    "authorized_actor_names": { "type": "array", "items": { "type": "string" } },
+    "create_protected": { "type": "boolean" }
   },
   "additionalProperties": false,
   "title": "branch protection rule"

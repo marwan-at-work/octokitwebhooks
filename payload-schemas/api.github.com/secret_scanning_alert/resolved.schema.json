@@ -12,6 +12,15 @@
     "alert": {
       "type": "object",
       "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "locations_url": {
+          "type": "string"
+        },
         "number": {
           "type": "integer"
         },
@@ -37,6 +46,12 @@
           "$ref": "common/user.schema.json"
         },
         "secret_type": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "url": {
           "type": "string"
         }
       },

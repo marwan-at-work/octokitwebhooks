@@ -112,9 +112,9 @@
               "description": "The severity of the alert."
             },
             "tags": {
-              "type": [
-                "array",
-                "null"
+              "oneOf": [
+                {"type": "null"},
+                {"type": "array", "items": { "type": "string" }}
               ]
             }
           },
@@ -204,7 +204,7 @@
       "$ref": "common/repository.schema.json"
     },
     "sender": {
-      "$ref": "common/github-org.schema.json"
+      "$ref": "common/user.schema.json"
     }
   },
   "required": [

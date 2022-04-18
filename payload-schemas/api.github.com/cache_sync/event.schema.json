@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "cache_location": {
+      "type": "string"
+    },
+    "ref": {
+      "type": "string"
+    },
+    "before": {
+      "type": "string"
+    },
+    "after": {
+      "type": "string"
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "required": [
+    "cache_location",
+    "ref",
+    "before",
+    "after"
+  ]
+}
