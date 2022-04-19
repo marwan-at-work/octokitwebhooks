@@ -208,6 +208,28 @@
             "body_html": {
               "type": "string"
             },
+            "container_metadata": {
+              "type": "object",
+              "properties": {
+                "labels": {
+                  "type": "null"
+                },
+                "manifest": {
+                  "type": "null"
+                },
+                "tag": {
+                  "type": "object",
+                  "properties": {
+                    "digest": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
             "created_at": {
               "type": "string"
             },
@@ -218,6 +240,9 @@
               "type": "array",
               "items": {}
             },
+            "draft": {
+              "type": "boolean"
+            },
             "html_url": {
               "type": "string"
             },
@@ -225,6 +250,9 @@
               "type": "integer"
             },
             "installation_command": {
+              "type": "string"
+            },
+            "manifest": {
               "type": "string"
             },
             "metadata": {
@@ -297,7 +325,110 @@
             "package_url": {
               "type": "string"
             },
+            "prerelease": {
+              "type": "boolean"
+            },
+            "release": {
+              "type": "object",
+              "properties": {
+                "author": {
+                  "type": "object",
+                  "properties": {
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "login": {
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    },
+                    "starred_url": {
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "draft": {
+                  "type": "boolean"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "prerelease": {
+                  "type": "boolean"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "tag_name": {
+                  "type": "string"
+                },
+                "target_commitish": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            },
+            "rubygems_metadata": {
+              "type": "array"
+            },
             "summary": {
+              "type": "string"
+            },
+            "tag_name": {
               "type": "string"
             },
             "target_commitish": {

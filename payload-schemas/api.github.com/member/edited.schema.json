@@ -26,7 +26,15 @@
           "additionalProperties": false
         },
         "permission": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "null"
+            },
+            "to": {
+              "type": "null"
+            }
+          }
         }
       },
       "additionalProperties": false,

@@ -17,6 +17,9 @@
         {
           "type": "object",
           "properties": {
+            "active_lock_reason": {
+              "type": "null"
+            },
             "answer_chosen_at": {
               "type": "null"
             },
@@ -26,11 +29,108 @@
             "answer_html_url": {
               "type": "null"
             },
+            "author_association": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "created_at": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "emoji": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "is_answerable": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "repository_id": {
+                  "type": "integer"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                }
+              }
+            },
+            "comments": {
+              "type": "integer"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
             "locked": {
               "type": "boolean",
               "enum": [
                 false
               ]
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "reactions": {
+              "type": "object",
+              "properties": {
+                "+1": {
+                  "type": "integer"
+                },
+                "-1": {
+                  "type": "integer"
+                },
+                "confused": {
+                  "type": "integer"
+                },
+                "eyes": {
+                  "type": "integer"
+                },
+                "heart": {
+                  "type": "integer"
+                },
+                "hooray": {
+                  "type": "integer"
+                },
+                "laugh": {
+                  "type": "integer"
+                },
+                "rocket": {
+                  "type": "integer"
+                },
+                "total_count": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            },
+            "repository_url": {
+              "type": "string"
             },
             "state": {
               "type": "string",
@@ -39,6 +139,74 @@
                 "converting",
                 "transferring"
               ]
+            },
+            "timeline_url": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "user": {
+              "type": "object",
+              "properties": {
+                "avatar_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "login": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
             }
           },
           "required": [

@@ -2,110 +2,156 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "status$event",
   "type": "object",
-  "required": [
-    "id",
-    "sha",
-    "name",
-    "target_url",
-    "context",
-    "description",
-    "state",
-    "commit",
-    "branches",
-    "created_at",
-    "updated_at",
-    "repository",
-    "sender"
-  ],
   "properties": {
-    "id": {
-      "type": "integer",
-      "description": "The unique identifier of the status."
+    "avatar_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
     },
-    "sha": { "type": "string", "description": "The Commit SHA." },
-    "name": { "type": "string" },
-    "avatar_url": { "type": ["string", "null"], "format": "uri" },
-    "target_url": {
-      "type": ["string", "null"],
-      "description": "The optional link added to the status."
-    },
-    "context": { "type": "string" },
-    "description": {
-      "type": ["string", "null"],
-      "description": "The optional human-readable description added to the status."
-    },
-    "state": {
-      "type": "string",
-      "enum": ["pending", "success", "failure", "error"],
-      "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
+    "branches": {
+      "type": "array",
+      "description": "An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "commit": {
+            "type": "object",
+            "properties": {
+              "sha": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "sha",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "name": {
+            "type": "string"
+          },
+          "protected": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "commit",
+          "protected"
+        ],
+        "additionalProperties": false
+      }
     },
     "commit": {
       "type": "object",
-      "required": [
-        "sha",
-        "node_id",
-        "commit",
-        "url",
-        "html_url",
-        "comments_url",
-        "author",
-        "committer",
-        "parents"
-      ],
       "properties": {
-        "sha": { "type": "string" },
-        "node_id": { "type": "string" },
+        "author": {
+          "oneOf": [
+            {
+              "$ref": "common/user.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comments_url": {
+          "type": "string",
+          "format": "uri"
+        },
         "commit": {
           "type": "object",
-          "required": [
-            "author",
-            "committer",
-            "message",
-            "tree",
-            "url",
-            "comment_count",
-            "verification"
-          ],
           "properties": {
             "author": {
               "allOf": [
-                { "$ref": "common/committer.schema.json" },
+                {
+                  "$ref": "common/committer.schema.json"
+                },
                 {
                   "type": "object",
-                  "required": ["date"],
-                  "properties": { "date": { "type": "string" } },
-                  "tsAdditionalProperties": false
+                  "properties": {
+                    "date": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "date"
+                  ]
                 }
               ]
+            },
+            "comment_count": {
+              "type": "integer"
             },
             "committer": {
               "allOf": [
-                { "$ref": "common/committer.schema.json" },
+                {
+                  "$ref": "common/committer.schema.json"
+                },
                 {
                   "type": "object",
-                  "required": ["date"],
-                  "properties": { "date": { "type": "string" } },
-                  "tsAdditionalProperties": false
+                  "properties": {
+                    "date": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "date"
+                  ]
                 }
               ]
             },
-            "message": { "type": "string" },
+            "message": {
+              "type": "string"
+            },
             "tree": {
               "type": "object",
-              "required": ["sha", "url"],
               "properties": {
-                "sha": { "type": "string" },
-                "url": { "type": "string", "format": "uri" }
+                "sha": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
               },
+              "required": [
+                "sha",
+                "url"
+              ],
               "additionalProperties": false
             },
-            "url": { "type": "string", "format": "uri" },
-            "comment_count": { "type": "integer" },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
             "verification": {
               "type": "object",
-              "required": ["verified", "reason", "signature", "payload"],
               "properties": {
-                "verified": { "type": "boolean" },
+                "payload": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "reason": {
                   "type": "string",
                   "enum": [
@@ -124,68 +170,171 @@
                     "valid"
                   ]
                 },
-                "signature": { "type": ["string", "null"] },
-                "payload": { "type": ["string", "null"] }
+                "signature": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "verified": {
+                  "type": "boolean"
+                }
               },
+              "required": [
+                "verified",
+                "reason",
+                "signature",
+                "payload"
+              ],
               "additionalProperties": false
             }
           },
+          "required": [
+            "author",
+            "committer",
+            "message",
+            "tree",
+            "url",
+            "comment_count",
+            "verification"
+          ],
           "additionalProperties": false
         },
-        "url": { "type": "string", "format": "uri" },
-        "html_url": { "type": "string", "format": "uri" },
-        "comments_url": { "type": "string", "format": "uri" },
-        "author": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
-        },
         "committer": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
+          "oneOf": [
+            {
+              "$ref": "common/user.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "html_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "node_id": {
+          "type": "string"
         },
         "parents": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["sha", "url", "html_url"],
             "properties": {
-              "sha": { "type": "string" },
-              "url": { "type": "string", "format": "uri" },
-              "html_url": { "type": "string", "format": "uri" }
+              "html_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "sha": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
             },
+            "required": [
+              "sha",
+              "url",
+              "html_url"
+            ],
             "additionalProperties": false
           }
+        },
+        "sha": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
         }
       },
+      "required": [
+        "sha",
+        "node_id",
+        "commit",
+        "url",
+        "html_url",
+        "comments_url",
+        "author",
+        "committer",
+        "parents"
+      ],
       "additionalProperties": false
     },
-    "branches": {
-      "type": "array",
-      "description": "An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.",
-      "items": {
-        "type": "object",
-        "required": ["name", "commit", "protected"],
-        "properties": {
-          "name": { "type": "string" },
-          "commit": {
-            "type": "object",
-            "required": ["sha", "url"],
-            "properties": {
-              "sha": { "type": "string" },
-              "url": { "type": "string", "format": "uri" }
-            },
-            "additionalProperties": false
-          },
-          "protected": { "type": "boolean" }
-        },
-        "additionalProperties": false
-      }
+    "context": {
+      "type": "string"
     },
-    "created_at": { "type": "string" },
-    "updated_at": { "type": "string" },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "created_at": {
+      "type": "string"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The optional human-readable description added to the status."
+    },
+    "id": {
+      "type": "integer",
+      "description": "The unique identifier of the status."
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "sha": {
+      "type": "string",
+      "description": "The Commit SHA."
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "success",
+        "failure",
+        "error"
+      ],
+      "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
+    },
+    "target_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The optional link added to the status."
+    },
+    "updated_at": {
+      "type": "string"
+    }
   },
+  "required": [
+    "id",
+    "sha",
+    "name",
+    "target_url",
+    "context",
+    "description",
+    "state",
+    "commit",
+    "branches",
+    "created_at",
+    "updated_at",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "status event"
 }

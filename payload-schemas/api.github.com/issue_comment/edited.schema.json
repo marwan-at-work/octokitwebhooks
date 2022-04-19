@@ -2,62 +2,260 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "issue_comment$edited",
   "type": "object",
-  "required": ["action", "changes", "issue", "comment", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["edited"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "edited"
+      ]
+    },
     "changes": {
       "type": "object",
-      "description": "The changes to the comment.",
       "properties": {
         "body": {
           "type": "object",
-          "required": ["from"],
           "properties": {
             "from": {
               "type": "string",
               "description": "The previous version of the body."
             }
           },
+          "required": [
+            "from"
+          ],
           "additionalProperties": false
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The changes to the comment."
+    },
+    "comment": {
+      "$ref": "common/issue-comment.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
     },
     "issue": {
-      "description": "The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.",
       "allOf": [
-        { "$ref": "common/issue.schema.json" },
+        {
+          "$ref": "common/issue.schema.json"
+        },
         {
           "type": "object",
-          "required": ["labels", "state", "locked", "assignee"],
           "properties": {
+            "active_lock_reason": {
+              "type": "null"
+            },
             "assignee": {
               "oneOf": [
-                { "$ref": "common/user.schema.json" },
-                { "type": "null" }
+                {
+                  "$ref": "common/user.schema.json"
+                },
+                {
+                  "type": "null"
+                }
               ]
+            },
+            "assignees": {
+              "type": "array"
+            },
+            "author_association": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            },
+            "closed_at": {
+              "type": "null"
+            },
+            "comments": {
+              "type": "integer"
+            },
+            "comments_url": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "$ref": "common/label.schema.json"
+              }
+            },
+            "labels_url": {
+              "type": "string"
+            },
+            "locked": {
+              "type": "boolean"
+            },
+            "milestone": {
+              "type": "null"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "performed_via_github_app": {
+              "type": "null"
+            },
+            "reactions": {
+              "type": "object",
+              "properties": {
+                "+1": {
+                  "type": "integer"
+                },
+                "-1": {
+                  "type": "integer"
+                },
+                "confused": {
+                  "type": "integer"
+                },
+                "eyes": {
+                  "type": "integer"
+                },
+                "heart": {
+                  "type": "integer"
+                },
+                "hooray": {
+                  "type": "integer"
+                },
+                "laugh": {
+                  "type": "integer"
+                },
+                "rocket": {
+                  "type": "integer"
+                },
+                "total_count": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            },
+            "repository_url": {
+              "type": "string"
             },
             "state": {
               "type": "string",
-              "enum": ["open", "closed"],
+              "enum": [
+                "open",
+                "closed"
+              ],
               "description": "State of the issue; either 'open' or 'closed'"
             },
-            "locked": { "type": "boolean" },
-            "labels": {
-              "type": "array",
-              "items": { "$ref": "common/label.schema.json" }
+            "timeline_url": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "user": {
+              "type": "object",
+              "properties": {
+                "avatar_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "login": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
             }
           },
-          "tsAdditionalProperties": false
+          "required": [
+            "labels",
+            "state",
+            "locked",
+            "assignee"
+          ]
         }
-      ]
+      ],
+      "description": "The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to."
     },
-    "comment": { "$ref": "common/issue-comment.schema.json" },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "changes",
+    "issue",
+    "comment",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "issue_comment edited event"
 }

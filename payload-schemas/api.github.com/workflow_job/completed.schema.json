@@ -2,28 +2,114 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "workflow_job$completed",
   "type": "object",
-  "required": ["action", "repository", "sender", "workflow_job"],
   "properties": {
-    "action": { "type": "string", "enum": ["completed"] },
-    "organization": { "$ref": "common/organization.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "enterprise": { "$ref": "common/enterprise.schema.json" },
+    "action": {
+      "type": "string",
+      "enum": [
+        "completed"
+      ]
+    },
+    "enterprise": {
+      "$ref": "common/enterprise.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
     "workflow_job": {
       "allOf": [
-        { "$ref": "common/workflow-job.schema.json" },
+        {
+          "$ref": "common/workflow-job.schema.json"
+        },
         {
           "type": "object",
-          "required": ["conclusion"],
           "properties": {
-            "conclusion": { "type": "string", "enum": ["success", "failure"] }
+            "check_run_url": {
+              "type": "string"
+            },
+            "completed_at": {
+              "type": "string"
+            },
+            "conclusion": {
+              "type": "string",
+              "enum": [
+                "success",
+                "failure"
+              ]
+            },
+            "head_sha": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "labels": {
+              "type": "array"
+            },
+            "name": {
+              "type": "string"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "run_attempt": {
+              "type": "integer"
+            },
+            "run_id": {
+              "type": "integer"
+            },
+            "run_url": {
+              "type": "string"
+            },
+            "runner_group_id": {
+              "type": "null"
+            },
+            "runner_group_name": {
+              "type": "null"
+            },
+            "runner_id": {
+              "type": "null"
+            },
+            "runner_name": {
+              "type": "null"
+            },
+            "started_at": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "steps": {
+              "type": "array"
+            },
+            "url": {
+              "type": "string"
+            }
           },
-          "tsAdditionalProperties": false
+          "required": [
+            "conclusion"
+          ]
         }
       ]
     }
   },
+  "required": [
+    "action",
+    "repository",
+    "sender",
+    "workflow_job"
+  ],
   "additionalProperties": false,
   "title": "workflow_job completed event"
 }

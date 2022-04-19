@@ -208,6 +208,9 @@
             "description": {
               "type": "string"
             },
+            "docker_metadata": {
+              "type": "array"
+            },
             "draft": {
               "type": "boolean"
             },

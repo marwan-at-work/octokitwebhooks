@@ -2,28 +2,155 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "milestone$closed",
   "type": "object",
-  "required": ["action", "milestone", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["closed"] },
+    "action": {
+      "type": "string",
+      "enum": [
+        "closed"
+      ]
+    },
+    "installation": {
+      "$ref": "common/installation-lite.schema.json"
+    },
     "milestone": {
       "allOf": [
-        { "$ref": "common/milestone.schema.json" },
+        {
+          "$ref": "common/milestone.schema.json"
+        },
         {
           "type": "object",
-          "required": ["state", "closed_at"],
           "properties": {
-            "state": { "type": "string", "enum": ["closed"] },
-            "closed_at": { "type": "string" }
+            "closed_at": {
+              "type": "string"
+            },
+            "closed_issues": {
+              "type": "integer"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "creator": {
+              "type": "object",
+              "properties": {
+                "avatar_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "login": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": {
+              "type": "string"
+            },
+            "due_on": {
+              "type": "null"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "labels_url": {
+              "type": "string"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "open_issues": {
+              "type": "integer"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "closed"
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
           },
-          "tsAdditionalProperties": false
+          "required": [
+            "state",
+            "closed_at"
+          ]
         }
       ]
     },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
   },
+  "required": [
+    "action",
+    "milestone",
+    "repository",
+    "sender"
+  ],
   "additionalProperties": false,
   "title": "milestone closed event"
 }

@@ -19,8 +19,20 @@
         "followers": {
           "type": "integer"
         },
+        "followers_url": {
+          "type": "string"
+        },
         "following": {
           "type": "integer"
+        },
+        "following_url": {
+          "type": "string"
+        },
+        "gists_url": {
+          "type": "string"
+        },
+        "gravatar_id": {
+          "type": "string"
         },
         "has_organization_projects": {
           "type": "boolean"
@@ -49,7 +61,13 @@
         "members_url": {
           "type": "string"
         },
+        "name": {
+          "type": "string"
+        },
         "node_id": {
+          "type": "string"
+        },
+        "organizations_url": {
           "type": "string"
         },
         "public_gists": {
@@ -61,7 +79,22 @@
         "public_repos": {
           "type": "integer"
         },
+        "received_events_url": {
+          "type": "string"
+        },
         "repos_url": {
+          "type": "string"
+        },
+        "site_admin": {
+          "type": "boolean"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "starred_url": {
+          "type": "string"
+        },
+        "subscriptions_url": {
           "type": "string"
         },
         "type": {
@@ -72,6 +105,9 @@
         },
         "url": {
           "type": "string"
+        },
+        "website_url": {
+          "type": "null"
         }
       },
       "required": [
