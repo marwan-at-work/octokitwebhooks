@@ -57,7 +57,10 @@
               ]
             },
             "assignees": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "author_association": {
               "type": "string"

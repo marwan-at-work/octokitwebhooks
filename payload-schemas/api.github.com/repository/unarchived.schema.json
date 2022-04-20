@@ -301,7 +301,10 @@
               "type": "string"
             },
             "topics": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "trees_url": {
               "type": "string"

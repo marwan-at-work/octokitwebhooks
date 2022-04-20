@@ -43,7 +43,10 @@
               "type": "null"
             },
             "assignees": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "author_association": {
               "type": "string"
@@ -76,7 +79,10 @@
               "type": "integer"
             },
             "labels": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "labels_url": {
               "type": "string"

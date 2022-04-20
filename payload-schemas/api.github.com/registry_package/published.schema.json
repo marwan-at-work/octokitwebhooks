@@ -423,7 +423,10 @@
               }
             },
             "rubygems_metadata": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "summary": {
               "type": "string"

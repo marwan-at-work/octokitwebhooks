@@ -5,6 +5,10 @@
   "required": ["action", "check_suite", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["requested"] },
+    "actions_meta": {
+      "type": "object",
+      "additionalProperties": true
+    },
     "check_suite": {
       "type": "object",
       "description": "The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).",

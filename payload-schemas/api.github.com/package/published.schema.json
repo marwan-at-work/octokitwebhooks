@@ -62,9 +62,14 @@
               "type": "string"
             },
             "container_metadata": {
-              "type": [
-                "object",
-                "null"
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               ]
             },
             "created_at": {

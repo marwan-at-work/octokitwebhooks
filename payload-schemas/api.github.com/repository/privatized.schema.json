@@ -294,7 +294,10 @@
               "type": "string"
             },
             "topics": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "trees_url": {
               "type": "string"

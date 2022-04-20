@@ -24,7 +24,10 @@
           "type": "object",
           "properties": {
             "assets": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "assets_url": {
               "type": "string"

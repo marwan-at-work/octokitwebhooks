@@ -9,6 +9,10 @@
         "rerequested"
       ]
     },
+    "actions_meta": {
+      "type": "object",
+      "additionalProperties": true
+    },
     "check_suite": {
       "type": "object",
       "properties": {

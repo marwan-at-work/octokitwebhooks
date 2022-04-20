@@ -55,7 +55,10 @@
               "type": "integer"
             },
             "labels": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "name": {
               "type": "string"
@@ -91,7 +94,10 @@
               "type": "string"
             },
             "steps": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "url": {
               "type": "string"

@@ -56,7 +56,10 @@
               "type": "object",
               "properties": {
                 "bullets": {
-                  "type": "array"
+                  "type": "array",
+                  "items": {
+                    "type": "null"
+                  }
                 },
                 "description": {
                   "type": "string"

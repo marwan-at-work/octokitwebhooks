@@ -390,7 +390,10 @@
               "type": "null"
             },
             "pull_requests": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "null"
+              }
             },
             "repository": {
               "type": "object",
