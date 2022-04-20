@@ -461,7 +461,8 @@
           ]
         },
         "registry": {
-          "type": "null"
+          "type": ["object", "null"],
+          "additionalProperties": true
         },
         "updated_at": {
           "type": [

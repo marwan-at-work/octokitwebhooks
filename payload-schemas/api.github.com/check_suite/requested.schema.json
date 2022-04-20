@@ -6,7 +6,7 @@
   "properties": {
     "action": { "type": "string", "enum": ["requested"] },
     "actions_meta": {
-      "type": "object",
+      "type": ["object", "null"],
       "additionalProperties": true
     },
     "check_suite": {

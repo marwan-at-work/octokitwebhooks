@@ -238,7 +238,10 @@
             },
             "package_files": {
               "type": "array",
-              "items": {}
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              }
             },
             "package_url": {
               "type": "string"

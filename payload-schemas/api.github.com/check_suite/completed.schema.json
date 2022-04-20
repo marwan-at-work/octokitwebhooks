@@ -80,7 +80,7 @@
       "additionalProperties": false
     },
     "actions_meta": {
-      "type": "object",
+      "type": ["object", "null"],
       "additionalProperties": true
     },
     "repository": { "$ref": "common/repository.schema.json" },
